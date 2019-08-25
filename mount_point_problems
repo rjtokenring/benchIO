@@ -1,0 +1,13 @@
+MOUNT POINT PROBLEMS
+
+Some distribution (like Ubuntu Edgy) use this kind of syntax in /etc/fstab:
+
+UUID=35bf931d-d179-43f9-bb87-5b905a9919be	/	reiserfs	notail,noatime  0       1
+
+This brings to a /proc/mounts like this:
+
+/dev/disk-by-uuid/35bf931d-d179-43f9-bb87-5b905a9919be /home xfs rw 0 0
+
+BenchIO needs a standard /dev notattaion (like /dev/sda1) in /proc/mdstat. You can modify
+your /etc/fstab, changing UUID=* with standard /dev/[sd*|hd*] notation, and then make a system 
+reboot. 
